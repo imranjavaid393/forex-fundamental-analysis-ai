@@ -9,7 +9,7 @@ def get_currency_indicators(currency: str):
     """Get economic indicators for a specific currency (e.g., EUR, USD, GBP)."""
     data = get_indicators(currency)
     if not data:
-        available = list(ECONOMIC_DATA.keys())
+        available = sorted(ECONOMIC_DATA.keys())
         raise HTTPException(
             status_code=404,
             detail=f"No data for currency '{currency.upper()}'. Available: {', '.join(available)}"
