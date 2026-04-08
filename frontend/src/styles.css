@@ -1,0 +1,353 @@
+/* ====================================
+   Forex Fundamental Analysis AI - Styles
+   ==================================== */
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --border: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --bullish: #10b981;
+  --bearish: #ef4444;
+  --neutral: #f59e0b;
+  --radius: 8px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---- App Layout ---- */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon { font-size: 1.5rem; }
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.logo-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  background: var(--bg-primary);
+  border-radius: 12px;
+}
+
+.nav { display: flex; gap: 0.5rem; }
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.nav-btn:hover { color: var(--text-primary); background: var(--bg-primary); }
+.nav-btn.active { color: var(--accent); border-color: var(--accent); }
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---- Page ---- */
+.page { width: 100%; }
+
+/* ---- Dashboard ---- */
+.dashboard { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.pair-selector {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.pair-selector h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.selector-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pair-select {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+.pair-select:focus { outline: 2px solid var(--accent); }
+
+.analyze-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.analyze-btn:hover:not(:disabled) { background: var(--accent-hover); }
+.analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.hint { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.75rem; }
+
+/* ---- Loading Spinner ---- */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Error Box ---- */
+.error-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--bearish);
+  color: var(--bearish);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+}
+
+/* ---- Analysis Detail ---- */
+.analysis-detail {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.analysis-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pair-title { font-size: 2rem; font-weight: 700; letter-spacing: 1px; }
+.created-at { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.25rem; }
+
+.bias-section { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+
+/* ---- Bias Label ---- */
+.bias-label {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.375rem 1rem;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+.bias-bullish { background: rgba(16, 185, 129, 0.15); color: var(--bullish); border: 1px solid var(--bullish); }
+.bias-bearish { background: rgba(239, 68, 68, 0.15); color: var(--bearish); border: 1px solid var(--bearish); }
+.bias-neutral { background: rgba(245, 158, 11, 0.15); color: var(--neutral); border: 1px solid var(--neutral); }
+
+/* ---- Confidence Bar ---- */
+.confidence-bar-wrapper { display: flex; align-items: center; gap: 0.75rem; }
+.confidence-bar {
+  width: 150px;
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.confidence-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.confidence-text { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); min-width: 40px; }
+
+/* ---- Analysis Body ---- */
+.analysis-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+.analysis-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+/* ---- Indicator Table ---- */
+.indicator-table-wrapper { overflow-x: auto; }
+.indicator-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.indicator-table th, .indicator-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.indicator-table th {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.indicator-table tr:last-child td { border-bottom: none; }
+.indicator-table tr:hover td { background: rgba(59, 130, 246, 0.05); }
+
+.favor { font-weight: 600; }
+.favor-base { color: var(--bullish); }
+.favor-quote { color: var(--bearish); }
+.favor-neutral { color: var(--neutral); }
+
+.central-banks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.cb-item {
+  background: var(--bg-primary);
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+.cb-item span { color: var(--text-secondary); }
+
+/* ---- Analysis Text ---- */
+.analysis-text {
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+  line-height: 1.75;
+}
+.analysis-text p:not(:last-child) { margin-bottom: 0.75rem; }
+
+/* ---- History ---- */
+.history-page h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+
+.history-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.history-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.history-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.history-item:last-child { border-bottom: none; }
+.history-item:hover { background: var(--bg-primary); }
+.history-item.active { background: rgba(59, 130, 246, 0.1); border-left: 3px solid var(--accent); }
+
+.history-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.375rem; }
+.pair-badge { font-weight: 700; font-size: 1rem; }
+.history-item-meta { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary); }
+
+.history-detail { flex: 1; }
+.empty-state { color: var(--text-secondary); text-align: center; padding: 3rem; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .app-main { padding: 1rem; }
+  .history-layout { grid-template-columns: 1fr; }
+  .central-banks { grid-template-columns: 1fr; }
+  .confidence-bar { width: 100px; }
+  .pair-title { font-size: 1.5rem; }
+}
